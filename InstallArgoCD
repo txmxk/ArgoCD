@@ -1,0 +1,28 @@
+# Argo GIT: https://github.com/argoproj/argo-cd
+# Installation for Version v2.4.0
+kubectl create namespace argocd
+kubectl apply -n argocd -f https://raw.githubusercontent.com/argoproj/argo-cd/v2.4.0/manifests/install.yaml
+
+k get all -n argocd
+NAME                                              TYPE        CLUSTER-IP       EXTERNAL-IP   PORT(S)                      AGE
+service/argocd-applicationset-controller          ClusterIP   10.111.64.233    <none>        7000/TCP,8080/TCP            70s
+service/argocd-dex-server                         ClusterIP   10.107.142.241   <none>        5556/TCP,5557/TCP,5558/TCP   70s
+service/argocd-metrics                            ClusterIP   10.107.68.210    <none>        8082/TCP                     70s
+service/argocd-notifications-controller-metrics   ClusterIP   10.108.221.161   <none>        9001/TCP                     70s
+service/argocd-redis                              ClusterIP   10.111.241.27    <none>        6379/TCP                     70s
+service/argocd-repo-server                        ClusterIP   10.109.197.172   <none>        8081/TCP,8084/TCP            70s
+service/argocd-server                             ClusterIP   10.101.77.172    <none>        80/TCP,443/TCP               70s
+service/argocd-server-metrics                     ClusterIP   10.110.210.98    <none>        8083/TCP                     70
+
+Change Type frm cluster IP to Nodeport on service/argocd-server      
+# kubectl edit -n argocd service/argocd-server
+-
+-
+selector:
+ 37     app.kubernetes.io/name: argocd-server
+ 38   sessionAffinity: None
+ 39   type: ClusterIP
+
+# kubectl get all -n argocd
+ service/argocd-server                             NodePort    10.101.77.172    <none>        80:31482/TCP,443:31093/TCP   2m49s
+
