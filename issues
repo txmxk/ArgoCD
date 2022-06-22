@@ -1,0 +1,26 @@
+NAME                                               READY   UP-TO-DATE   AVAILABLE   AGE
+deployment.apps/argocd-applicationset-controller   0/1     1            0           10m
+deployment.apps/argocd-dex-server                  0/1     1            0           10m
+deployment.apps/argocd-notifications-controller    0/1     1            0           10m
+deployment.apps/argocd-redis                       0/1     1            0           10m
+deployment.apps/argocd-repo-server                 0/1     1            0           10m
+deployment.apps/argocd-server                      0/1     1            0           10m
+
+
+# k get events -n argocd
+59s         Warning   FailedCreatePodSandBox   pod/argocd-server-7b6c5446f8-qw5j9                       (combined from similar events): Failed to create pod sandbox: rpc error: code = Unknown desc = failed to setup network for sandbox "151333812c7d05f2e3d79764ff1f5a7b0f96f95955107b2db7777c8cb68cb54c": stat /var/lib/calico/nodename: no such file or directory: check that the calico/node container is running and has mounted /var/lib/calico/
+47m         Normal    Scheduled                pod/argocd-server-7b6c5446f8-sbzg8                       Successfully assigned argocd/argocd-server-7b6c5446f8-sbzg8 to node02
+47m         Warning   FailedCreatePodSandBox   pod/argocd-server-7b6c5446f8-sbzg8                       Failed to create pod sandbox: rpc error: code = Unknown desc = failed to setup network for sandbox "4b8ff39fc56dda8acde6c798bb4e19e1c71b1b804cdcc9a8b058bc4d027260a7": stat /var/lib/calico/nodename: no such file or directory: check that the calico/node container is running and has mounted /var/lib/calico/
+13m         Normal    Scheduled                pod/argocd-server-7b6c5446f8-xvptz                       Successfully assigned argocd/argocd-server-7b6c5446f8-xvptz to worker02
+49m         Normal    SuccessfulCreate         replicaset/argocd-server-7b6c5446f8                      Created pod: argocd-server-7b6c5446f8-kbwvg
+47m         Normal    SuccessfulCreate         replicaset/argocd-server-7b6c5446f8                      Created pod: argocd-server-7b6c5446f8-sbzg8
+14m         Normal    SuccessfulCreate         replicaset/argocd-server-7b6c5446f8                      Created pod: argocd-server-7b6c5446f8-kxnlz
+13m         Normal    SuccessfulCreate         replicaset/argocd-server-7b6c5446f8                      Created pod: argocd-server-7b6c5446f8-xvptz
+11m         Normal    SuccessfulCreate         replicaset/argocd-server-7b6c5446f8                      Created pod: argocd-server-7b6c5446f8-qw5j9
+49m         Normal    ScalingReplicaSet        deployment/argocd-server                                 Scaled up replica set argocd-server-7b6c5446f8 to 1
+46m         Normal    ScalingReplicaSet        deployment/argocd-server                                 Scaled up replica set argocd-server-6dd9cd7964 to 1
+14m         Normal    ScalingReplicaSet        deployment/argocd-server                                 Scaled up replica set argocd-server-7b6c5446f8 to 1
+11m         Normal    ScalingReplicaSet        deployment/argocd-server                                 Scaled up replica set argocd-server-7b6c5446f8 to 1
+5m5s        Normal    ScalingReplicaSet        deployment/argocd-server                                 Scaled up replica set argocd-server-6dd9cd7964 to 1
+
+
